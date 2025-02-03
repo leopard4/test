@@ -1,0 +1,53 @@
+Me
+
+@database.py#L5 
+
+I notice you have a database connection string that includes hardcoded credentials in your code. This is a security risk as it could expose sensitive database credentials if the code is committed to version control or shared. Let me help you make this more secure by using environment variables instead.
+
+I'll edit the database.py file to use environment variables for the sensitive credentials:
+
+Edited
+database.py
++3
+-1
+ 19
+Open diff
+I've made the following improvements to your database configuration:
+
+1.Added imports for os and quote_plus (for proper URL encoding of passwords)
+2.Replaced the hardcoded database URL with environment variables:
+DB_USER for username
+DB_PASSWORD for password
+DB_HOST for host
+DB_PORT for port
+DB_NAME for database name
+Now you'll need to set these environment variables in your development environment. You can do this by creating a .env file in your project root. Let me create that file for you with some example values:
+
+Created
+.env
++9
+-0
+ 0
+Open diff
+I'll also create a .gitignore file to ensure the .env file doesn't get committed to version control:
+
+Created
+.gitignore
++11
+-0
+ 0
+Open diff
+These changes improve your application's security by:
+
+1.Moving sensitive credentials out of the code
+2.Using environment variables for configuration
+3.Preventing accidental commit of credentials with .gitignore
+4.Adding proper URL encoding for passwords that might contain special characters
+Make sure to:
+
+1.Update the values in the .env file with your actual database credentials
+2.Add the .env file to your documentation as a template (with dummy values) so other developers know what environment variables they need to set
+3.Never commit the actual .env file with real credentials to version control
+Would you like me to help you set up any additional security measures or explain how to load these environment variables in your application?
+
+Done
